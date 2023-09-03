@@ -1,5 +1,4 @@
 //封装一个栈
-
 class ArrayStack {
     //定义一个数组，用于存储元素
     private data: any[] = [] //在这里面可以放任何类型
@@ -19,11 +18,27 @@ class ArrayStack {
     peek (): any {
         return this.data[this.data.length - 1]
     }
+    //isEmpty:判断栈是否为空
+    isEmpty (): boolean {
+        return this.data.length == 0
+    }
+    //size返回栈的数据个数
+    size (): number {
+        return this.data.length
+    }
 
 }
 
-
-
-
+//案例
 //创建stack的实例
 const stack1 = new ArrayStack()
+stack1.push("好好")
+stack1.push("学习")
+stack1.push("天天")
+stack1.push("向上")
+
+
+// console.log(stack1.peek());
+// console.log(stack1.isEmpty());
+
+export { }
