@@ -1,5 +1,4 @@
 
-
 function lastRemaining (n: number, m: number) {
 
     let position = 0;

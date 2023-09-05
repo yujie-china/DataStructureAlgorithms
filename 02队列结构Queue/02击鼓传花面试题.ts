@@ -8,7 +8,7 @@ function hotPotato (names: string[], num: number) {
         queue.enqueue(name)
     }
     while (queue.size > 1) {
-        //3.淘汰规则
+        //3.淘汰规则 
         for (let i = 1; i < num; i++) {
             const name = queue.dequeue()
             if (name) queue.enqueue(name)

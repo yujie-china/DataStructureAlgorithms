@@ -17,4 +17,4 @@ function lastRemaining (n: number, m: number) {
 
 }
 
-console.log(lastRemaining(5, 3));
+console.log(lastRemaining(5, 3));//3
