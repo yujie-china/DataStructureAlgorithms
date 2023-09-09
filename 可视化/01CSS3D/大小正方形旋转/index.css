@@ -1,0 +1,124 @@
+body {
+  margin: 100px auto;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2b3a42;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.webpack-logo {
+  width: 100%;
+  height: 200px;
+  /* border: 1px solid red; */
+
+  position: relative;
+}
+.cube-inner {
+  /* 在父元素中添加 transform-style来启用3D空间 */
+  transform-style: preserve-3d;
+  transform: rotateX(-33.5deg) rotateY(45deg);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100px;
+  height: 100px;
+  margin: -25px 0px 0px -25px;
+  backface-visibility: visible;
+  transform-style: preserve-3d;
+  animation: innerLoop 6s ease-in-out infinite;
+}
+@keyframes innerLoop {
+  0% {
+    transform: rotateX(-33.5deg) rotateY(45deg);
+  }
+
+  50%,
+  100% {
+    transform: rotateX(-33.5deg) rotateY(-315deg);
+  }
+}
+@keyframes outerLoop {
+  0% {
+    transform: rotateX(-33.5deg) rotateY(45deg);
+  }
+
+  50%,
+  100% {
+    transform: rotateX(-33.5deg) rotateY(405deg);
+  }
+}
+.cube-outer {
+  /* 在父元素中添加 transform-style来启用3D空间 */
+  margin: -50px 0px 0px -50px;
+  transform-style: preserve-3d;
+  transform: rotateX(-33.5deg) rotateY(45deg);
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  backface-visibility: visible;
+  animation: outerLoop 6s ease-in-out infinite;
+}
+
+li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #175f96;
+  background-color: rgba(141, 214, 249, 0.5);
+  border: 1px solid white;
+}
+
+.top {
+  transform: rotateX(90deg) translateZ(50px);
+}
+.bottom {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+.front {
+  transform: rotateY(0deg) translateZ(50px);
+}
+
+.back {
+  transform: rotateY(-180deg) translateZ(50px);
+}
+
+.left {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+.right {
+  transform: rotateY(90deg) translateZ(50px);
+}
+
+.top1 {
+  transform: rotateX(90deg) translateZ(100px);
+}
+.bottom1 {
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
+.front1 {
+  transform: rotateY(0deg) translateZ(100px);
+}
+
+.back1 {
+  transform: rotateY(-180deg) translateZ(100px);
+}
+
+.left1 {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+.right1 {
+  transform: rotateY(90deg) translateZ(100px);
+}

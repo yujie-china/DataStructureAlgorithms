@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-image: url(./images/grid.png);
+      background-size: contain;
+    }
+    .item1 {
+      background-color: skyblue;
+      width: 200px;
+      height: 100px;
+      /* margin: 100px auto; */
+
+      /* transform: translateX(100px) rotate(45deg); */
+      transform: translateX(100px) rotate(45deg);
+    }
+    .item2 {
+      background-color: red;
+      width: 200px;
+      height: 100px;
+      transform: rotate(45deg) translateX(100px);
+    }
+  </style>
+  <body>
+    <div class="item1">item</div>
+    <div class="item2"></div>
+    <div class="item2" style="transform-origin: left top"></div>
+  </body>
+</html>
