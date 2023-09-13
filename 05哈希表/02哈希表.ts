@@ -25,10 +25,39 @@ class HashTable<T = any> {
         const index = hashCode % max
         return index
     }
+    /**
+     * 传入一个数字，判断是否是质数
+     * @param number 要判断是数字
+     * @returns 是否是一个质数
+     */
+    isPrime (number: number): boolean {
+        if (number === 1) return false
+        for (let i = 2; i < number; i++) {
+            if (number % i == 0) {
+                return false
+            }
+        }
+        return true
+    }
+    /**
+     * 传入新的质数
+     * @param number 传入的数字
+     * @returns 返回新的质数
+     */
+    private getNextPrime (number: number): number {
+        let newPrime = number
+        while (!this.isPrime(number)) {
+            newPrime++
+        }
+        return newPrime
+    }
+
+
     //扩容或者缩容操作
     private resize (newLength: number) {
+        //判断newlength是否是质数
+        this.length = this.getNextPrime(newLength)
         //设置新长度
-        this.length = newLength
         //获取原来所有的数据，并且重新放人到新的容量数组中
         //1.对数据今昔初始化
         const oldStorage = this.storage
