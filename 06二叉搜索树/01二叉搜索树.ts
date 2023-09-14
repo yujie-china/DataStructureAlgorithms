@@ -153,7 +153,35 @@ class BSTree<T>{
     search (value: T): boolean {
         return !!this.searchNode(value)//!!把node行转换成boolean
     }
-    //实现删除操作
+
+    /**实现删除操作*/
+    private getSuccessor (delNode: TreeNode<T>): TreeNode<T> {
+        //获取右子树
+        let current = delNode.right
+        let successor: TreeNode<T> | null = null
+        while (current) {
+            successor = current
+            current = current.left
+            if (current) {
+                current.parent = successor
+            }
+        }
+        //拿到了后继节点
+        if (successor !== delNode.right) {
+            successor!.parent!.left = successor!.right
+            successor!.right = delNode.right
+        }
+
+
+
+
+        //找到后继节点
+        console.log("删除节点:", delNode.value, "后继节点：", successor?.value);
+        //一定要好进行的操作：将删除节点的left复制给后继节点的left
+        successor!.left = delNode.left
+        return successor!
+    }
+
     remove (value: T): boolean {
         // 1.对这个节点进行搜索（是需要删除的节点）
         const current = this.searchNode(value)
@@ -186,6 +214,30 @@ class BSTree<T>{
             }
             return false
         }
+        // else if (current.right !== null && current.left !== null) {//如果删除的节点下面有两个节点
+        //     if (current === this.root) {//如果是根节点 
+        //         this.root = current.right
+        //         this.root.left = current.left
+        //     } else if (current.parent!.value > current?.value) {
+        //         current.parent!.left = current.right
+        //         current.parent!.left.left = current.left
+        //     } else {
+        //         current.parent!.right = current.right
+        //         current.parent!.right.left = current.left
+        //     }
+        // }
+        else {
+            const successor = this.getSuccessor(current)
+            if (current === this.root) {
+                this.root = successor
+            } else if (current.parent!.value > current?.value) {
+                current.parent!.left = successor
+            } else {
+                current.parent!.right = successor
+            }
+
+
+        }
         return true
     }
 }
@@ -211,11 +263,17 @@ bst.print()
 // console.log(bst.search(25));
 // console.log(bst.search(30));
 //删除子节点
-bst.remove(18)
-bst.remove(14)
+// bst.remove(18)
+// bst.remove(14)
+// bst.print()
+// bst.remove(13)
+// bst.print()
+// bst.remove(5)
+// bst.print()
+// bst.remove(9)
+// bst.print()
+bst.remove(7)
 bst.print()
-bst.remove(13)
-bst.print()
-bst.remove(20)
+bst.remove(11)
 bst.print()
 export default { BSTree, TreeNode }
